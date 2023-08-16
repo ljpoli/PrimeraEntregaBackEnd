@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "title": "Remeras",
+    "description": "lisas",
+    "code": "ab001",
+    "price": 1600,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 50,
+    "category": "indumentaria"
+  },
+  {
+    "id": 2,
+    "title": "Pantalones",
+    "description": "cargo",
+    "code": "ab002",
+    "price": 300,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 3,
+    "title": "Polleras",
+    "description": "largas",
+    "code": "ab003",
+    "price": 2000,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 4,
+    "title": "Buzos",
+    "description": "canguros",
+    "code": "ab004",
+    "price": 2500,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 5,
+    "title": "Medias",
+    "description": "deportivas",
+    "code": "ab005",
+    "price": 800,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 6,
+    "title": "Camperas",
+    "description": "cuero",
+    "price": 20000,
+    "status": "true",
+    "thumbnail": "url",
+    "code": "ab006",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 7,
+    "title": "Sweaters",
+    "description": "lana",
+    "code": "ab007",
+    "price": 3000,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 8,
+    "title": "Zapatillas",
+    "description": "running",
+    "code": "ab008",
+    "price": 25000,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 9,
+    "title": "Sombreros",
+    "description": "livianos",
+    "code": "ab009",
+    "price": 1500,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 10,
+    "title": "Bufandas",
+    "description": "abrigadas",
+    "code": "ab010",
+    "price": 1000,
+    "status": "true",
+    "thumbnail": "url",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 11,
+    "title": "Camisas",
+    "description": "jean",
+    "code": "ab020",
+    "price": 12500,
+    "status": "true",
+    "stock": 500,
+    "category": "indumentaria"
+  },
+  {
+    "id": 12,
+    "title": "Poleras",
+    "description": "lycra",
+    "code": "ab021",
+    "price": 2500,
+    "status": "true",
+    "stock": 500,
+    "category": "indumentaria"
+  }
+]
