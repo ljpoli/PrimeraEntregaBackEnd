@@ -1,17 +1,17 @@
 import express from "express";
 import handlebars from "express-handlebars";
+import currentDir from "./utils.js";
 import productsRouter from "./routes/products.js";
 import cartsRouter from "./routes/carts.js";
-import currentDir from "./utils.js";
-import { ProductManager } from "./managers/productManager.js"; 
 import viewsRouter from "./routes/views.router.js"; 
 import { Server } from "socket.io";
+import { ProductManager } from "./managers/productManager.js"; 
+
 
 
 const app = express();
 const port = 8080;
-const PM = new ProductManager("./products.json");
-
+const PM = new ProductManager("./src/data/products.json");
 
 //#Handlebars
 app.engine("handlebars", handlebars.engine());
@@ -21,7 +21,7 @@ app.set("views", `${currentDir}/views`);
 //#Express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(`/static`,express.static(`${currentDir}/public`))
+app.use(express.static(`${currentDir}/public`));
 
 //Routes
 app.use("/", viewsRouter);
@@ -30,17 +30,16 @@ app.use("/api/carts", cartsRouter);
 app.use('/api', cartsRouter); 
 app.use("/api",productsRouter);
 
-//Servidor en puerto
 
 // levanto el servidor en el puerto indicado
- const httpServer = app.listen(port, () =>
+ const httpServer = app.listen(port, () =>{ 
    console.log(`Server ON - http://localhost:${port}`)
- );
+ });
 
  const io = new Server(httpServer);
  io.on("connection", (socket) => {
    console.log("Cliente conectado!!!");
-
+ 
 
   //obtengo todos los productos
    const products = PM.getProduct();

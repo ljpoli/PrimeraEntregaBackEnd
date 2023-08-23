@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { ProductManager } from "../managers/productManager.js";
 
-const router = Router();
-const PM = new ProductManager();
+ const router = Router();
+ const PM = new ProductManager();
 
 router.get("/", (req, res) => {
   const products = PM.getProduct();
