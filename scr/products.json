@@ -1,5 +1,5 @@
-[
-  {
+[  
+    {
     "id": 1,
     "title": "Remeras",
     "description": "lisas",
@@ -121,7 +121,7 @@
   },
   {
     "id": 12,
-    "title": "Poleras",
+    "title": "Polleras",
     "description": "lycra",
     "code": "ab021",
     "price": 2500,

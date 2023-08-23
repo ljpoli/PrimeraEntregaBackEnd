@@ -1,8 +1,8 @@
 import express from "express";
-import CartManager from "../cartManger.js"; 
+import CartManager from "../managers/cartManger.js"; 
 
 const router = express.Router();
-const manager = new CartManager("./data/carritos.json");
+const manager = new CartManager("./data/productos.json");
 
 router.get("/carts", async (req, res) => {
   try {
@@ -29,9 +29,11 @@ router.get("/carts/:cid", async (req, res) => {
 
 router.post("/carts/", async (req, res) => {
   try {
+    console.log("Adding a new cart...");
     await manager.addCart();
     res.json({ status: "success", message: "Carrito creado exitosamente." });
   } catch (error) {
+    console.error("Error adding cart:", error);
     res.status(500).json({ status: "error", message: "Error al crear el carrito." });
   }
 });
@@ -41,12 +43,14 @@ router.post("/carts/:cid/products/:pid", async (req, res) => {
     const cid = parseInt(req.params.cid);
     const pid = parseInt(req.params.pid);
 
+    console.log(`Adding product with ID ${pid} to cart with ID ${cid}...`);
     await manager.addProductToCart(cid, pid);
     res.json({ status: "success", message: "Producto agregado al carrito exitosamente." });
   } catch (error) {
-    console.error("Error al agregar producto al carrito:", error);
+    console.error("Error adding product to cart:", error);
     res.status(500).json({ status: "error", message: "Error al agregar el producto al carrito." });
   }
 });
+
 
 export default router;

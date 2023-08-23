@@ -1,18 +1,20 @@
 {
-  "name": "desafio_3",
+  "name": "desafio_4",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "start": "nodemon ./scr/app.js",
-  "dev": "node --watch app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./scr/app.js",
+    "dev": "node --watch app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "socket.io": "^4.7.2"
   },
   "type": "module"
 }

@@ -31,9 +31,10 @@ export class ProductManager {
       throw new Error("Todos los campos son obligatorios");
     }
 
-    const productAlreadyExist = this.products.find((p) => p.code === code);
-    if (productAlreadyExist) {
-      throw new Error("El código del producto ya está en uso");
+    const noDupCode = this.products.some((prod) => prod.code === code);
+    if (noDupCode) {
+      console.error(`Error: product code "${code}" already exists`);
+      return false; // respuesta para el endpoint
     }
 
     const newProduct = {
@@ -50,44 +51,48 @@ export class ProductManager {
 
     this.products.push(newProduct);
     this.saveProducts();
+
+
+    return newProduct; // respuesta para el endpoint
+    console.log(newProduct)
   }
 
   getProduct() {
     return this.products;
   }
 
-  getProductById(id) {
-    const product = this.products.find((p) => p.id === id);
-    if (!product) {
-      throw new Error("Producto no encontrado");
-    }
+   getProductById(id) {
+     const product = this.products.find((p) => p.id === id);
+     if (!product) {
+       throw new Error("Producto no encontrado");
+     }
     return product;
-  }
+   }
 
-  updateProduct(id, updatedFields) {
-    const productIndex = this.products.findIndex((p) => p.id === id);
-    if (productIndex === -1) {
-      throw new Error("Producto no encontrado");
-    }
-    this.products[productIndex] = { ...this.products[productIndex], ...updatedFields };
-    this.saveProducts();
-  }
+   updateProduct(id, updatedFields) {
+     const productIndex = this.products.findIndex((p) => p.id === id);
+     if (productIndex === -1) {
+       throw new Error("Producto no encontrado");
+     }
+     this.products[productIndex] = { ...this.products[productIndex], ...updatedFields };
+     this.saveProducts();
+   }
 
-  deleteProduct(id) {
-    this.products = this.products.filter((p) => p.id !== id);
-    this.saveProducts();
-  }
+   deleteProduct(id) {
+     this.products = this.products.filter((p) => p.id !== id);
+     this.saveProducts();
+   }
 
-  readProducts() {
-    try {
-      const data = fs.readFileSync(this.path, "utf-8");
-      this.products = JSON.parse(data);
-    } catch (error) {
-      this.products = [];
-    }
-  }
+   readProducts() {
+     try {
+       const data = fs.readFileSync(this.path, "utf-8");
+       this.products = JSON.parse(data);
+     } catch (error) {
+       this.products = [];
+     }
+   }
 
-  saveProducts() {
-    fs.writeFileSync(this.path, JSON.stringify(this.products, null, 2), "utf-8");
-  }
-}
+   saveProducts() {
+     fs.writeFileSync(this.path, JSON.stringify(this.products, null, 2), "utf-8");
+   }
+ }

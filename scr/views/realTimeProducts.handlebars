@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="text-center fw-bold text-dark mt-4">Real Time Products</h1>
+    <div class="col-12 col-md-6">
+      <div class="p-4" id="formAdd">
+        <h3 class="fw-bold text-dark mt-4">Agregar producto nuevo</h3>
+        <div class="mb-3">
+          <label class="form-label">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            id="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descripción</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="description"
+          />
+        </div>
+        <div class="mb-3">
+          <div class="col-6">
+            <label class="form-label">Precio</label>
+            <input
+              type="text"
+              class="form-control"
+              name="price"
+              id="price"
+            />
+          </div>
+          <div class="col-6">
+            <label class="form-label">Código</label>
+            <input
+              type="text"
+              class="form-control"
+              name="code"
+              id="code"
+            />
+          </div>
+
+         </div>
+    {{!--    <div class="mb-3">
+          <label class="form-label">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Link of the image"
+            name="thumbnails"
+            id="thumbnails"
+          />
+        </div> --}}
+        <input
+          type="button"
+          class="btn btn-success"
+          value="Agregar producto (+)"
+          id="btnAddProduct"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="p-4" id="formDelete">
+        <h3 class="fw-bold text-dark mt-4">Borrar producto</h3>
+        <div class="mb-3">Borrar producto por ID
+          <label class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            id="inputDeleteId"
+          />
+        </div>
+        <input
+          type="button"
+          class="btn btn-danger"
+          value="Borrar producto (-)"
+          id="btnDeleteProduct"
+        />
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" id="srvResponse"></div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../public/js/realTimeProducts.js"></script>
