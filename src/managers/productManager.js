@@ -52,14 +52,18 @@ export class ProductManager {
     this.products.push(newProduct);
     this.saveProducts();
 
-
-    return newProduct; // respuesta para el endpoint
     console.log(newProduct)
+    return newProduct; // respuesta para el endpoint
+    
   }
+  // getProduct() {
+  //   this.products = JSON.parse(fs.readFileSync(this.path, "utf-8"));
+  //   return this.products;
+  // }
 
-  getProduct() {
-    return this.products;
-  }
+   getProduct() {
+     return this.products;
+   }
 
    getProductById(id) {
      const product = this.products.find((p) => p.id === id);
@@ -84,13 +88,14 @@ export class ProductManager {
    }
 
    readProducts() {
-     try {
-       const data = fs.readFileSync(this.path, "utf-8");
-       this.products = JSON.parse(data);
-     } catch (error) {
-       this.products = [];
-     }
-   }
+    try {
+      const data = fs.readFileSync(this.path, "utf-8");
+      this.products = JSON.parse(data);
+    } catch (error) {
+      this.products = [];
+    }
+  }
+  
 
    saveProducts() {
      fs.writeFileSync(this.path, JSON.stringify(this.products, null, 2), "utf-8");

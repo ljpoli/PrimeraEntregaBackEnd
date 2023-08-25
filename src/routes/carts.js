@@ -1,117 +1,44 @@
-import fs from "fs";
+import express from "express";
+import { CartManager } from "../managers/cartManager.js";
 
-export default class CartManager {
-  constructor(path) {
-    this.path = path,
-    this.carts = [
-    ]
-  }
+const router = express.Router();
+const CM = new CartManager();
 
-  getCarts = async () => {
-    if (fs.existsSync(this.path)) {
-      const cartlist = await fs.promises.readFile(this.path, "utf-8");
-      const cartlistparse = JSON.parse(cartlist);
-      return cartlistparse;
-    } else {
-      return [];
-    }
-  }
-
- 
-  getCartbyId = async (id) => {
-    try {
-      const { cid } = id;
-      if (fs.existsSync(this.path)) {
-        const allcarts = await this.getCarts();
-        const found = allcarts.find(element => element.id === parseInt(cid));
-        if (found) {
-          return found;
-        } else {
-          return "cart no existe";
-        }
-      } else {
-        return "cart file json not found";
-      }
-    } catch (error) {
-      return error;
-    }
-  }
-
-  generatecartId = async () => {
-    try {
-      if (fs.existsSync(this.path)) {
-        const cartlist = await fs.promises.readFile(this.path, "utf-8");
-        const cartlistJs = JSON.parse(cartlist);
-        const counter = cartlistJs.length;
-        if (counter === 0) {
-          return 1;
-        } else {
-          return cartlistJs[counter - 1].id + 1;
-        }
-      }
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
-
- // addCart = async () => {
- //   const listaCarts = await this.getCarts();
- //   const id = await this.generatecartId();
- //   const cartNew = {
- //     id,
- //     products: []
- //   };
-  
- //   if (listaCarts) {
- //     listaCarts.push(cartNew);
- //   } else {
- //     listaCarts = [cartNew]; // Si la lista de carritos está vacía o no existe, crea una nueva lista con el carrito
- //   }
- addCart = async () => {
+// Agregar un carrito nuevo
+router.post("/", async (req, res) => {
   try {
-    let listaCarts = await this.getCarts(); // Cambio const por let
-    console.log("Current cart list:", listaCarts);
-
-    const id = await this.generatecartId();
-    console.log("Generated cart ID:", id);
-
-    const cartNew = {
-      id,
-      products: []
-    };
-
-    if (listaCarts) {
-      listaCarts.push(cartNew);
-    } else {
-      listaCarts = [cartNew];
-    }
-
-    console.log("Updated cart list:", listaCarts);
-    await fs.promises.writeFile(this.path, JSON.stringify(listaCarts, null, 2));
-
-    console.log("Cart added successfully.");
+    await CM.addCart();
+    res.status(201).json({ message: "Carrito creado exitosamente" });
   } catch (error) {
-    console.error("Error adding cart:", error);
-    throw error;
+    res.status(500).json({ error: "Error al crear el carrito" });
   }
-}
+});
 
-addProductToCart = async (cid, pid) => {
-  const listaCarts = await this.getCarts();
-  const cart = listaCarts.find(e => e.id === cid);
-  if (cart) {
-    const productIndex = cart.products.findIndex(p => p === pid); // Cambio de p.pid a p === pid
-    if (productIndex !== -1) {
-      // Si el producto ya existe en el carrito, incrementar la cantidad
-      cart.products[productIndex].quantity++;
+// Agregar un producto a un carrito
+router.post("/:cid/products/:pid", async (req, res) => {
+  try {
+    const cid = parseInt(req.params.cid);
+    const pid = parseInt(req.params.pid);
+    const result = await CM.addProductToCart(cid, pid);
+    if (result) {
+      res.status(200).json({ message: "Producto agregado al carrito exitosamente" });
     } else {
-      // Si el producto no existe en el carrito, agregarlo como un nuevo objeto
-      cart.products.push({
-        pid,
-        quantity: 1
-      });
+      res.status(404).json({ error: "Carrito no encontrado" });
     }
-    await fs.promises.writeFile(this.path, JSON.stringify(listaCarts, null, 2));
+  } catch (error) {
+    res.status(500).json({ error: "Error al agregar producto al carrito" });
   }
-}
-}
+});
+
+// Obtener un carrito por ID
+router.get("/:cid", async (req, res) => {
+  try {
+    const cid = parseInt(req.params.cid);
+    const cart = await CM.getCartbyId({ cid });
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(404).json({ error: "Carrito no encontrado" });
+  }
+});
+
+export default router;
