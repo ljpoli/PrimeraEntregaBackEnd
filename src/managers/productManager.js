@@ -25,9 +25,11 @@ class ProductManager {
   }
 
   async addProduct(product) {
-    const { title, description, code, price, status, stock, category, thumbnails } = product;
+    console.log(product)
+    const { title, description, code, price, status, stock, category, thumbnail } = product;
+    
 
-    if (!title || !description || !code || !price || status === undefined || !stock || !category) {
+    if (!title || !description || !code || !price || status === undefined || !stock || !category || !thumbnail) {
       throw new Error("Todos los campos son obligatorios");
     }
 
@@ -46,7 +48,7 @@ class ProductManager {
       status,
       stock,
       category,
-      thumbnails,
+      thumbnail,
     };
 
     this.products.push(newProduct);
@@ -54,7 +56,6 @@ class ProductManager {
 
     console.log(newProduct)
     return newProduct; // respuesta para el endpoint
-    
   }
 
   getProduct() {

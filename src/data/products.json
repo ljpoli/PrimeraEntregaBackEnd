@@ -11,17 +11,6 @@
     "category": "indumentaria"
   },
   {
-    "id": 2,
-    "title": "Pantalones",
-    "description": "cargo",
-    "code": "ab002",
-    "price": 300,
-    "status": "true",
-    "thumbnail": "../img/indumentaria.webp",
-    "stock": 500,
-    "category": "indumentaria"
-  },
-  {
     "id": 3,
     "title": "Polleras",
     "description": "largas",
@@ -130,5 +119,16 @@
     "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
+  },
+  {
+    "id": 13,
+    "title": "anteojos ",
+    "description": "de sol",
+    "code": "ab2222",
+    "price": 22000,
+    "status": "available",
+    "stock": 10,
+    "category": "indumentaria",
+    "thumbnail": "url/anteojos.webp"
   }
 ]

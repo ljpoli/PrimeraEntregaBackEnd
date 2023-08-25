@@ -52,11 +52,11 @@ app.use("/api",productsRouter);
        title: data.title,
        description: data.description,
        code: data.code,
-       price: data.price,
-       status: "",
+       price: parseFloat(data.price),
+       status: "available",
        stock: 10,
-       category: "",
-       thumbnails: data.thumbnails,
+       category: "indumentaria",
+       thumbnail: data.thumbnail,
      };
 
      //creo el producto

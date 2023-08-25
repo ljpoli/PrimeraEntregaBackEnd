@@ -20,7 +20,7 @@ socket.on("realTimeProducts", (data) => {
     html += `<tr>
               <td>${prod.id}</td>
               <td>${prod.title}</td>
-              <td><img src="${prod.thumbnails}" alt="" width="100px" /></td>
+              <td><img src="${prod.thumbnail}" alt="" width="100px" /></td>
               <td>${prod.description}</td>
               <td>$ ${prod.price}</td>
             </tr>`;
@@ -34,13 +34,15 @@ const addProduct = () => {
   const description = document.getElementById("description").value;
   const price = document.getElementById("price").value;
   const code = document.getElementById("code").value;
-  const thumbnails = document.getElementById("thumbnails").value;
+  const thumbnail = document.getElementById("thumbnail").value;
   const product = {
     title: title,
     description: description,
-    price: price,
+    price: parseFloat(price),
     code: code,
-    thumbnails: [thumbnails],
+    thumbnail: thumbnail,
+
+
   };
   socket.emit("newProduct", product);
 };
