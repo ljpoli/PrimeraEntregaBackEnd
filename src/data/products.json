@@ -119,16 +119,5 @@
     "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
-  },
-  {
-    "id": 13,
-    "title": "anteojos ",
-    "description": "de sol",
-    "code": "ab2222",
-    "price": 22000,
-    "status": "available",
-    "stock": 10,
-    "category": "indumentaria",
-    "thumbnail": "url/anteojos.webp"
   }
 ]

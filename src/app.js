@@ -53,7 +53,7 @@ app.use("/api",productsRouter);
        description: data.description,
        code: data.code,
        price: parseFloat(data.price),
-       status: "available",
+       status: "true",
        stock: 10,
        category: "indumentaria",
        thumbnail: data.thumbnail,
