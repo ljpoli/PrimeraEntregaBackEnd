@@ -1,92 +1,102 @@
-<div class="container-fluid">
-  <div class="row">
-    <h1 class="text-center fw-bold text-dark mt-4">Real Time Products</h1>
-    <div class="col-12 col-md-6">
-      <div class="p-4" id="formAdd">
-        <h3 class="fw-bold text-dark mt-4">Agregar producto nuevo</h3>
-        <div class="mb-3">
-          <label class="form-label">Título</label>
-          <input
-            type="text"
-            class="form-control"
-            name="title"
-            id="title"
-          />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Descripción</label>
-          <input
-            type="text"
-            class="form-control"
-            name="description"
-            id="description"
-          />
-        </div>
-        <div class="mb-3">
-          <div class="col-6">
-            <label class="form-label">Precio</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Time Products</title>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <h1 class="text-center fw-bold text-dark mt-4">Real Time Products</h1>
+      <div class="col-12 col-md-6">
+        <div class="p-4" id="formAdd">
+          <h3 class="fw-bold text-dark mt-4">Agregar producto nuevo</h3>
+          <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
             <input
               type="text"
               class="form-control"
-              name="price"
-              id="price"
+              name="title"
+              id="title"
             />
           </div>
-          <div class="col-6">
-            <label class="form-label">Código</label>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
             <input
               type="text"
               class="form-control"
-              name="code"
-              id="code"
+              name="description"
+              id="description"
             />
           </div>
-
-         </div>
-       <div class="mb-3">
-          <label class="form-label">Image</label>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="price" class="form-label">Precio</label>
+              <input
+                type="text"
+                class="form-control"
+                name="price"
+                id="price"
+              />
+            </div>
+            <div class="col-6">
+              <label for="code" class="form-label">Código</label>
+              <input
+                type="text"
+                class="form-control"
+                name="code"
+                id="code"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="thumbnails" class="form-label">Image</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Link of the image"
+              name="thumbnails"
+              id="thumbnails"
+            />
+          </div>
           <input
-            type="text"
-            class="form-control"
-            placeholder="Link of the image"
-            name="thumbnails"
-            id="thumbnails"
-          />
-        </div> 
-        <input
-          type="button"
-          class="btn btn-success"
-          value="Agregar producto (+)"
-          id="btnAddProduct"
-        />
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div class="p-4" id="formDelete">
-        <h3 class="fw-bold text-dark mt-4">Borrar producto</h3>
-        <div class="mb-3">Borrar producto por ID
-          <label class="form-label"></label>
-          <input
-            type="text"
-            class="form-control"
-            name="id"
-            id="inputDeleteId"
+            type="button"
+            class="btn btn-success"
+            value="Agregar producto (+)"
+            id="btnAddProduct"
           />
         </div>
-        <input
-          type="button"
-          class="btn btn-danger"
-          value="Borrar producto (-)"
-          id="btnDeleteProduct"
-        />
       </div>
-
+      <div class="col-12 col-md-6">
+        <div class="p-4" id="formDelete">
+          <h3 class="fw-bold text-dark mt-4">Borrar producto</h3>
+          <div class="mb-3">
+            <label for="inputDeleteId" class="form-label">Borrar producto por ID</label>
+            <input
+              type="text"
+              class="form-control"
+              name="id"
+              id="inputDeleteId"
+            />
+          </div>
+          <input
+            type="button"
+            class="btn btn-danger"
+            value="Borrar producto (-)"
+            id="btnDeleteProduct"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" id="srvResponse"></div>
     </div>
   </div>
-  <div class="row">
-    <div class="col" id="srvResponse"></div>
-  </div>
-</div>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/realTimeProducts.js"></script>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/realTimeProducts.js"></script>
+</body>
+</html>

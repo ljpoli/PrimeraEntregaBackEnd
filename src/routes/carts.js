@@ -1,11 +1,11 @@
 import express from "express";
-import { CartManager } from "../managers/cartManager.js";
+import CartManager from "../managers/cartManager.js";
 
-const router = express.Router();
-const CM = new CartManager();
+const cartsRouter = express.Router();
+const CM = new CartManager("./src/data/carritos.json");
 
 // Agregar un carrito nuevo
-router.post("/", async (req, res) => {
+cartsRouter.post("/", async (req, res) => {
   try {
     await CM.addCart();
     res.status(201).json({ message: "Carrito creado exitosamente" });
@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
 });
 
 // Agregar un producto a un carrito
-router.post("/:cid/products/:pid", async (req, res) => {
+cartsRouter.post("/:cid/products/:pid", async (req, res) => {
   try {
     const cid = parseInt(req.params.cid);
     const pid = parseInt(req.params.pid);
@@ -31,7 +31,7 @@ router.post("/:cid/products/:pid", async (req, res) => {
 });
 
 // Obtener un carrito por ID
-router.get("/:cid", async (req, res) => {
+cartsRouter.get("/:cid", async (req, res) => {
   try {
     const cid = parseInt(req.params.cid);
     const cart = await CM.getCartbyId({ cid });
@@ -41,4 +41,4 @@ router.get("/:cid", async (req, res) => {
   }
 });
 
-export default router;
+export default cartsRouter;

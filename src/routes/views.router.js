@@ -1,18 +1,18 @@
- import { Router } from "express";
- import { ProductManager } from "../managers/productManager.js";
+import { Router } from "express";
+import ProductManager from "../managers/productManager.js";
 
-  const router = Router();
-  const PM = new ProductManager("products.json");
+const router = Router();
+const PM = new ProductManager("./src/data/products.json");
 
- router.get("/", (req, res) => {
-   const products = PM.getProduct();
-   console.log(products)
-   res.render("home", { products, title: "Home" });
- });
+router.get("/", (req, res) => {
+  const products = PM.getProduct();
 
- router.get("/realtimeproducts", (req, res) => {
-   const products = PM.getProduct(); 
-   res.render("realTimeProducts", { products, title: "Real Time Products" }); 
- });
+  res.render("home", { products, title: "Home" });
+});
 
- export default router;
+router.get("/realtimeproducts", (req, res) => {
+  const products = PM.getProduct();
+  res.render("realTimeProducts", { title: "Real Time Products" });
+});
+
+export default router;

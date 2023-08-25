@@ -1,10 +1,10 @@
  import express from "express";
- import { ProductManager } from "../managers/productManager.js";  
+ import ProductManager from "../managers/productManager.js";  
 
- const router = express.Router();
+ const productsRouter = express.Router();
  const PM = new ProductManager("./src/data/products.json");
 
- router.get("/", async (req, res) => {
+ productsRouter.get("/", async (req, res) => {
    try {
      const limit = req.query.limit;
      const products = await PM.getProduct();
@@ -20,7 +20,7 @@
    }
  });
 
- router.get("/:pid", async (req, res) => {
+ productsRouter.get("/:pid", async (req, res) => {
    try {
      const pid = parseInt(req.params.pid, 10);
      const product = await PM.getProductById(pid);
@@ -30,7 +30,7 @@
    }
  });
 
- router.post("/", async (req, res) => {
+ productsRouter.post("/", async (req, res) => {
    try {
      const product = req.body;
      const newProductId = await PM.generateId(); // Generar un nuevo ID único
@@ -44,7 +44,7 @@
 
 
 
- router.put("/:pid", async (req, res) => {
+ productsRouter.put("/:pid", async (req, res) => {
    try {
      const pid = parseInt(req.params.pid, 10);
      const updatedFields = req.body;
@@ -55,7 +55,7 @@
    }
  });
 
- router.delete("/:pid", async (req, res) => {
+ productsRouter.delete("/:pid", async (req, res) => {
    try {
      const pid = parseInt(req.params.pid, 10);
      await PM.deleteProduct(pid);
@@ -65,5 +65,5 @@
    }
  });
 
- export default router;
+ export default productsRouter;
 

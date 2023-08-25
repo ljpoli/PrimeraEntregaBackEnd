@@ -5,7 +5,7 @@ import productsRouter from "./routes/products.js";
 import cartsRouter from "./routes/carts.js";
 import viewsRouter from "./routes/views.router.js"; 
 import { Server } from "socket.io";
-import { ProductManager } from "./managers/productManager.js"; 
+import ProductManager from "./managers/productManager.js"; 
 
 
 

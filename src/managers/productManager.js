@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export class ProductManager {
+class ProductManager {
   constructor(path) {
     this.path = path;
     this.products = [];
@@ -56,14 +56,16 @@ export class ProductManager {
     return newProduct; // respuesta para el endpoint
     
   }
-  // getProduct() {
-  //   this.products = JSON.parse(fs.readFileSync(this.path, "utf-8"));
-  //   return this.products;
-  // }
 
-   getProduct() {
-     return this.products;
-   }
+  getProduct() {
+    try {
+      const data = fs.readFileSync(this.path, "utf-8");
+      this.products = JSON.parse(data);
+    } catch (error) {
+      this.products = [];
+    }
+    return this.products;
+  }
 
    getProductById(id) {
      const product = this.products.find((p) => p.id === id);
@@ -96,8 +98,12 @@ export class ProductManager {
     }
   }
   
+  
 
    saveProducts() {
      fs.writeFileSync(this.path, JSON.stringify(this.products, null, 2), "utf-8");
    }
  }
+
+
+ export default ProductManager;
