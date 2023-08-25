@@ -6,7 +6,7 @@
     "code": "ab001",
     "price": 1600,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 50,
     "category": "indumentaria"
   },
@@ -17,7 +17,7 @@
     "code": "ab002",
     "price": 300,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -28,7 +28,7 @@
     "code": "ab003",
     "price": 2000,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -39,7 +39,7 @@
     "code": "ab004",
     "price": 2500,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -50,7 +50,7 @@
     "code": "ab005",
     "price": 800,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -60,7 +60,7 @@
     "description": "cuero",
     "price": 20000,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "code": "ab006",
     "stock": 500,
     "category": "indumentaria"
@@ -72,7 +72,7 @@
     "code": "ab007",
     "price": 3000,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -83,7 +83,7 @@
     "code": "ab008",
     "price": 25000,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -94,7 +94,7 @@
     "code": "ab009",
     "price": 1500,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -105,7 +105,7 @@
     "code": "ab010",
     "price": 1000,
     "status": "true",
-    "thumbnail": "url",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -116,6 +116,7 @@
     "code": "ab020",
     "price": 12500,
     "status": "true",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   },
@@ -126,6 +127,7 @@
     "code": "ab021",
     "price": 2500,
     "status": "true",
+    "thumbnail": "../img/indumentaria.webp",
     "stock": 500,
     "category": "indumentaria"
   }
